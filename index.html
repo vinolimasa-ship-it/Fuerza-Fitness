@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FUERZA FITNESS | Suplementos Premium</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ff0000;
+            --dark: #0a0a0a;
+            --card-bg: #121212;
+            --text: #ffffff;
+            --accent: #ffd700;
+            --success: #27ae60;
+        }
+
+        body {
+            background-color: var(--dark);
+            color: var(--text);
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        header {
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), 
+                        url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&q=80') center/cover;
+            border-bottom: 4px solid var(--primary);
+        }
+
+        header h1 {
+            font-family: 'Bebas Neue', cursive;
+            font-size: clamp(3.5rem, 10vw, 6rem);
+            margin: 0;
+            letter-spacing: 4px;
+            text-shadow: 2px 2px 10px rgba(255,0,0,0.5);
+        }
+
+        header p {
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #ccc;
+        }
+
+        .container { max-width: 1200px; margin: auto; padding: 40px 20px; }
+
+        .section-title {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--primary);
+        }
+
+        .grid-productos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .producto-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 25px;
+            text-align: center;
+            transition: 0.4s;
+            border: 1px solid #222;
+        }
+
+        .producto-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 15px 35px rgba(255, 0, 0, 0.2);
+        }
+
+        .producto-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: contain;
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.5));
+            margin-bottom: 15px;
+        }
+
+        .precio {
+            font-size: 1.8rem;
+            color: var(--accent);
+            font-weight: 700;
+            display: block;
+            margin: 10px 0;
+        }
+
+        .btn-select {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: white;
+            padding: 12px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+            border-radius: 50px;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        .btn-select.active {
+            background: var(--primary);
+            box-shadow: 0 0 15px var(--primary);
+        }
+
+        .checkout-container {
+            background: #0f0f0f;
+            border-top: 2px solid var(--primary);
+            padding: 60px 20px;
+        }
+
+        .checkout-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .datos-pago {
+            background: #1a1a1a;
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 5px solid var(--accent);
+        }
+
+        .dato-item { margin-bottom: 15px; }
+        .dato-item label { display: block; font-size: 0.8rem; color: #888; text-transform: uppercase; }
+        .dato-item span { font-size: 1.1rem; font-weight: bold; color: #fff; }
+
+        .qr-card {
+            background: #fff;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .qr-card img { width: 100%; max-width: 180px; }
+
+        .form-pedido {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            color: #333;
+        }
+
+        .form-pedido input, .form-pedido textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .btn-enviar {
+            background: var(--success);
+            color: white;
+            border: none;
+            padding: 18px;
+            width: 100%;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-enviar:hover { background: #219150; transform: scale(1.02); }
+
+        footer { text-align: center; padding: 40px; color: #555; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>FUERZA FITNESS</h1>
+    <p>Suplementación de alto rendimiento</p>
+</header>
+
+<div class="container">
+    <h2 class="section-title">Nuestros Productos</h2>
+    <div class="grid-productos">
+        <div class="producto-card">
+            <img src="https://i.imgur.com/7gPVmWn.png" alt="Creatina ONNIT">
+            <h3>Creatina ONNIT Monohidrato</h3>
+            <span class="precio">$45.000</span>
+            <button class="btn-select" onclick="toggleSelect(this, 'Creatina ONNIT')">Seleccionar</button>
+        </div>
+        <div class="producto-card">
+            <img src="https://i.imgur.com/cdvP97p.png" alt="Creatina RAW">
+            <h3>Creatina RAW Essentials</h3>
+            <span class="precio">$48.500</span>
+            <button class="btn-select" onclick="toggleSelect(this, 'Creatina RAW')">Seleccionar</button>
+        </div>
+        <div class="producto-card">
+            <img src="https://i.imgur.com/ceFhPGO.png" alt="Creatina NutraKey">
+            <h3>Creatina NutraKey Pure</h3>
+            <span class="precio">$42.000</span>
+            <button class="btn-select" onclick="toggleSelect(this, 'Creatina NutraKey')">Seleccionar</button>
+        </div>
+        <div class="producto-card">
+            <img src="https://i.imgur.com/LRwjU5H.png" alt="BCAA Genetic">
+            <h3>BCAA Powder Genetic</h3>
+            <span class="precio">$35.000</span>
+            <button class="btn-select" onclick="toggleSelect(this, 'BCAA Genetic')">Seleccionar</button>
+        </div>
+        <div class="producto-card">
+            <img src="https://i.imgur.com/4dLPgpI.png" alt="Colageno Genetic">
+            <h3>Colágeno Hidrolizado Genetic</h3>
+            <span class="precio">$38.000</span>
+            <button class="btn-select" onclick="toggleSelect(this, 'Colageno Genetic')">Seleccionar</button>
+        </div>
+        <div class="producto-card">
+            <img src="https://i.imgur.com/qQzlh6T.png" alt="Diabolic Genetic">
+            <h3>Diabolic Power Genetic</h3>
+            <span class="precio">$41.000</span>
+            <button class="btn-select" onclick="toggleSelect(this, 'Diabolic Power Genetic')">Seleccionar</button>
+        </div>
+    </div>
+</div>
+
+<div class="checkout-container" id="checkout">
+    <div class="checkout-grid">
+        
+        <div class="datos-pago">
+            <h3 style="color:var(--accent); font-family:'Bebas Neue'; font-size:2rem; margin-top:0;">Datos de Transferencia</h3>
+            <div class="dato-item">
+                <label>Titular</label>
+                <span>Berta Leonor Rivas</span>
+            </div>
+            <div class="dato-item">
+                <label>Alias</label>
+                <span style="color:var(--accent)">fitness.coca</span>
+            </div>
+            <div class="dato-item">
+                <label>CBU</label>
+                <span>0000177500075008734646</span>
+            </div>
+            
+            <div class="qr-card">
+                <p style="color:#000; font-weight:bold; margin-bottom:5px; font-size:0.9rem;">PAGAR CON QR</p>
+                <img src="https://i.imgur.com/zVp6W4K.png" alt="QR Mercado Pago">
+            </div>
+        </div>
+
+        <form action="https://formspree.io/f/xzdyzloo" method="POST" class="form-pedido">
+            <h2 style="font-family:'Bebas Neue'; margin-top:0; color:#1a1a1a;">Finalizar Pedido</h2>
+            
+            <input type="text" name="nombre" placeholder="Tu Nombre Completo" required>
+            <input type="email" name="email" placeholder="Tu Correo Electrónico" required>
+            <input type="tel" name="whatsapp" placeholder="WhatsApp (Ej: 11 1234 5678)" required>
+            
+            <label style="font-size:0.8rem; font-weight:bold; color:#666;">PRODUCTOS SELECCIONADOS:</label>
+            <textarea id="lista-productos" name="pedido" readonly placeholder="Selecciona productos arriba..." required style="background:#f9f9f9; height:100px; font-weight:bold;"></textarea>
+            
+            <p style="font-size:0.75rem; color:#666; margin-bottom:15px; text-align:center;">
+                * Al enviar, recibirás una copia en tu email. Envíanos el comprobante por WhatsApp para despachar.
+            </p>
+            
+            <button type="submit" class="btn-enviar">ENVIAR PEDIDO</button>
+        </form>
+
+    </div>
+</div>
+
+<footer>
+    &copy; 2026 FUERZA FITNESS - Potencia tu rendimiento.
+</footer>
+
+<script>
+    let seleccionados = [];
+
+    function toggleSelect(btn, nombre) {
+        btn.classList.toggle('active');
+        if (btn.classList.contains('active')) {
+            seleccionados.push(nombre);
+            btn.innerText = "✓ SELECCIONADO";
+        } else {
+            seleccionados = seleccionados.filter(item => item !== nombre);
+            btn.innerText = "SELECCIONAR";
+        }
+        // Actualiza el campo de texto del formulario
+        document.getElementById('lista-productos').value = seleccionados.join('\n');
+    }
+</script>
+
+</body>
+</html>
